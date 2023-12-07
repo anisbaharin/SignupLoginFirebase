@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="price_array">
+        <item>SELECT PRICE:</item>
+        <item>RM50 FOR 1 HOUR</item>
+        <item>RM100 FOR 2 HOUR</item>
+        <item>RM25 FOR 30 MINUTES</item>
+    </string-array>
+</resources>
