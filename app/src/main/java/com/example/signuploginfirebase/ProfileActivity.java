@@ -1,15 +1,5 @@
 package com.example.signuploginfirebase;
 
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
@@ -18,32 +8,32 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class LocationActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class ProfileActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    EditText editTextSource;
-    EditText editTextDestination;
-    Button button;
     NavigationView navigationView;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
+
     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.location_activity);
+        setContentView(R.layout.profile_activity);
 
         mAuth = FirebaseAuth.getInstance();
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
-
-        editTextSource = findViewById(R.id.source);
-        editTextDestination = findViewById(R.id.destination);
-        button = findViewById(R.id.btnSubmit);
 
         setSupportActionBar(toolbar);
 
@@ -54,24 +44,6 @@ public class LocationActivity extends AppCompatActivity implements NavigationVie
         navigationView.setNavigationItemSelectedListener(this);
 
         navigationView.setCheckedItem(R.id.nav_home);
-
-        // Set onClickListener for the button
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String source = editTextSource.getText().toString();
-                String destination = editTextDestination.getText().toString();
-                if (source.equals("") && destination.equals("")) {
-                    Toast.makeText(getApplicationContext(), "Enter both source & destination", Toast.LENGTH_SHORT).show();
-                } else {
-                    Uri uri = Uri.parse("https://www.google.com/maps/dir/" + source + "/" + destination);
-                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                    intent.setPackage("com.google.android.apps.maps");
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                }
-            }
-        });
     }
 
     @Override
@@ -90,15 +62,16 @@ public class LocationActivity extends AppCompatActivity implements NavigationVie
         if (itemId == R.id.nav_home) {
             // Handle home click
         } else if (itemId == R.id.nav_home) {
-            // You are already in the LocationActivity, no need to start it again.
+            Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
+            startActivity(intent);
+        } else if (itemId == R.id.nav_location) {
+            Intent intent = new Intent(ProfileActivity.this, LocationActivity.class);
+            startActivity(intent);
         } else if (itemId == R.id.nav_inbox) {
-            Intent intent = new Intent(LocationActivity.this, ReceiptAcitivity.class);
+            Intent intent = new Intent(ProfileActivity.this, PaymentActivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_cart) {
-            Intent intent = new Intent(LocationActivity.this, PaymentActivity.class);
-            startActivity(intent);
-        } else if (itemId == R.id.nav_profile) {
-            Intent intent = new Intent(LocationActivity.this, ProfileActivity.class);
+            Intent intent = new Intent(ProfileActivity.this, ReceiptAcitivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_logout) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -111,7 +84,7 @@ public class LocationActivity extends AppCompatActivity implements NavigationVie
                             // For example, you can sign the user out and navigate to the login screen
                             // Replace the following with your actual logout logic
                             mAuth.getInstance().signOut();
-                            startActivity(new Intent(LocationActivity.this, LoginActivity.class));
+                            startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
                             finish();
                         }
                     })
@@ -123,8 +96,12 @@ public class LocationActivity extends AppCompatActivity implements NavigationVie
                     })
                     .show();
         }
-
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void openEditProfile(View view) {
+        Intent intent = new Intent(this, EditProfileActivity.class);
+        startActivity(intent);
     }
 }
