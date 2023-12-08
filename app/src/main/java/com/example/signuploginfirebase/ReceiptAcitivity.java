@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -95,5 +96,14 @@ public class ReceiptAcitivity extends AppCompatActivity implements NavigationVie
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+//    public void showProceedBtn(View view) {
+//        Intent intent = new Intent(ReceiptAcitivity.this, DetailsActivity.class);
+//        startActivity(intent);
+//    }
+    public void showBackBtn(View view) {
+        Intent intent = new Intent(ReceiptAcitivity.this, PaymentActivity.class);
+        startActivity(intent);
     }
 }

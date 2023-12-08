@@ -34,9 +34,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
-        Spinner spinner1 = findViewById(R.id.price1_spinner);
-        Spinner spinner2 = findViewById(R.id.price2_spinner);
-        Spinner spinner3 = findViewById(R.id.price3_spinner);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
@@ -50,21 +47,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         navigationView.setCheckedItem(R.id.nav_home);
-
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                this,
-                R.array.price_array,
-                android.R.layout.simple_spinner_item
-        );
-
-        // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        // Apply the adapter to the spinner
-        spinner1.setAdapter(adapter);
-        spinner2.setAdapter(adapter);
-        spinner3.setAdapter(adapter);
     }
 
     @Override

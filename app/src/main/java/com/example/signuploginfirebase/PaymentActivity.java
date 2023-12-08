@@ -5,19 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
-
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.view.GravityCompat;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -26,14 +22,16 @@ public class PaymentActivity extends AppCompatActivity implements NavigationView
     NavigationView navigationView;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
-
     private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.payment_activity);
 
         mAuth = FirebaseAuth.getInstance();
+        Spinner spinner1 = findViewById(R.id.time_spinner);
+        Spinner spinner2 = findViewById(R.id.duration_spinner);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
@@ -41,28 +39,51 @@ public class PaymentActivity extends AppCompatActivity implements NavigationView
         setSupportActionBar(toolbar);
 
         navigationView.bringToFront();
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
         navigationView.setCheckedItem(R.id.nav_home);
+
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(
+                this,
+                R.array.time_array,
+                android.R.layout.simple_spinner_item
+        );
+
+        // Specify the layout to use when the list of choices appears
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // Apply the adapter to the spinner
+        spinner1.setAdapter(adapter1);
+
+        // Next Array
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(
+                this,
+                R.array.duration_array,
+                android.R.layout.simple_spinner_item
+        );
+
+        // Specify the layout to use when the list of choices appears
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // Apply the adapter to the spinner
+        spinner2.setAdapter(adapter2);
     }
 
     @Override
     public void onBackPressed() {
-
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)) {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        }
-        else{
+        } else {
             super.onBackPressed();
         }
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
         int itemId = item.getItemId();
 
         if (itemId == R.id.nav_cart) {
@@ -79,7 +100,7 @@ public class PaymentActivity extends AppCompatActivity implements NavigationView
         } else if (itemId == R.id.nav_profile) {
             Intent intent = new Intent(PaymentActivity.this, ProfileActivity.class);
             startActivity(intent);
-        }else if (itemId == R.id.nav_logout) {
+        } else if (itemId == R.id.nav_logout) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Confirmation Exit")
                     .setMessage("Are you sure want to exit?")
@@ -104,5 +125,15 @@ public class PaymentActivity extends AppCompatActivity implements NavigationView
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void showProceedBtn(View view) {
+        Intent intent = new Intent(PaymentActivity.this, ReceiptAcitivity.class);
+        startActivity(intent);
+    }
+
+    public void showBackBtn(View view) {
+        Intent intent = new Intent(PaymentActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 }

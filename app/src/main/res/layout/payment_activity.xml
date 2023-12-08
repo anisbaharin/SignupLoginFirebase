@@ -19,34 +19,193 @@
         app:menu="@menu/nav_menu"
         android:layout_gravity="start"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/pagebkg">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/pagebkg">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="412dp"
-        android:layout_height="61dp"
-        android:minHeight="?attr/actionBarSize"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/menu" />
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="412dp"
+                android:layout_height="0dp"
+                android:minHeight="?attr/actionBarSize"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:navigationIcon="@drawable/menu" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Cart Payment"
-        android:textColor="@color/black"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+            <TextView
+                android:id="@+id/textcart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginEnd="100dp"
+                android:text="Cart Details"
+                android:textColor="@color/black"
+                android:textSize="36sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/toolbar"
+                app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView1"
+                android:layout_width="330dp"
+                android:layout_height="280dp"
+                android:layout_marginTop="32dp"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textcart">
 
+                <TextView
+                    android:id="@+id/retrievecourt"
+                    android:layout_width="280dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="60dp"
+                    android:hint="COURT"
+                    android:padding="8dp"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/retrievecourtname"
+                    android:layout_width="280dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginRight="60dp"
+                    android:hint="KENANGA"
+                    android:padding="8dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/retrieveprice"
+                    android:layout_width="260dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="90dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_weight="1"
+                    android:text="1 HOUR RM50"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/editdate"
+                    android:layout_width="81dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="140dp"
+                    android:layout_weight="1"
+                    android:text="DATE :"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/dateedit"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="90dp"
+                    android:layout_marginTop="130dp"
+                    android:layout_weight="1"
+                    android:hint="Example : 20/11"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/edittime"
+                    android:layout_width="260dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="180dp"
+                    android:layout_marginLeft="33dp"
+                    android:layout_weight="1"
+                    android:text="TIME :"
+                    android:textStyle="bold"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <Spinner
+                    android:id="@+id/time_spinner"
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="50dp"
+                    android:entries="@array/time_array"
+                    android:padding="14dp" />
+
+                <TextView
+                    android:id="@+id/editduration"
+                    android:layout_width="260dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="220dp"
+                    android:layout_marginLeft="33dp"
+                    android:layout_weight="1"
+                    android:text="DURATION :"
+                    android:textStyle="bold"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <Spinner
+                    android:id="@+id/duration_spinner"
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="90dp"
+                    android:entries="@array/duration_array"
+                    android:padding="14dp" />
+
+
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/proceedbtn"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="100dp"
+                android:backgroundTint="@color/black"
+                android:fontFamily="sans-serif"
+                android:letterSpacing="0.2"
+                android:text="Proceed"
+                android:textSize="15sp"
+                app:cornerRadius="10dp"
+                android:onClick="showProceedBtn"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/backbtn"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="50dp"
+                android:backgroundTint="@color/black"
+                android:fontFamily="sans-serif"
+                android:letterSpacing="0.2"
+                android:text="BACK"
+                android:textSize="15sp"
+                app:cornerRadius="10dp"
+                android:onClick="showBackBtn"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

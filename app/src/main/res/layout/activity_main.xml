@@ -126,15 +126,6 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/futsal1" />
 
-                <Spinner
-                    android:id="@+id/price1_spinner"
-                    android:layout_width="208dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="8dp"
-                    android:entries="@array/price_array"
-                    android:padding="14dp" />
-
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -149,7 +140,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="times"
-                    android:paddingTop="10dp"
+                    android:paddingTop="60dp"
                     android:paddingBottom="5dp"
                     android:text="COURT 02"
                     android:textAlignment="center"
@@ -177,15 +168,6 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/futsal2" />
 
-                <Spinner
-                    android:id="@+id/price2_spinner"
-                    android:layout_width="208dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="8dp"
-                    android:entries="@array/price_array"
-                    android:padding="14dp" />
-
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -199,7 +181,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="times"
-                    android:paddingTop="10dp"
+                    android:paddingTop="60dp"
                     android:paddingBottom="5dp"
                     android:text="COURT 03"
                     android:textAlignment="center"
@@ -226,15 +208,6 @@
                     android:layout_gravity="center"
                     android:scaleType="centerCrop"
                     android:src="@drawable/futsal3" />
-
-                <Spinner
-                    android:id="@+id/price3_spinner"
-                    android:layout_width="208dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="8dp"
-                    android:entries="@array/price_array"
-                    android:padding="14dp" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="match_parent"

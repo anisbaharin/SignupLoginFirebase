@@ -186,7 +186,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/editbtn"
+            android:id="@+id/retrievebtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="200dp"
@@ -194,12 +194,13 @@
             android:layout_marginBottom="60dp"
             android:backgroundTint="@color/black"
             android:gravity="center"
-            android:onClick="openEditProfile"
-            android:text="Edit Profile"
+            android:onClick="retrieveProfile"
+            android:text="Update"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

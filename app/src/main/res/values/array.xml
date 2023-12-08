@@ -6,4 +6,34 @@
         <item>RM100 FOR 2 HOUR</item>
         <item>RM25 FOR 30 MINUTES</item>
     </string-array>
+
+    <string-array name="payment_array">
+        <item>PAYMENT METHOD:</item>
+        <item>CASH</item>
+        <item>FPX PAYMENT</item>
+    </string-array>
+
+    <string-array name="time_array">
+        <item>Choose Start Time:</item>
+        <item>7:00PM</item>
+        <item>7:30PM</item>
+        <item>8:00PM</item>
+        <item>8:30PM</item>
+        <item>9:00PM</item>
+        <item>9:30PM</item>
+        <item>10:00PM</item>
+        <item>10:30PM</item>
+        <item>11:00PM</item>
+        <item>11:30PM</item>
+    </string-array>
+
+    <string-array name="duration_array">
+        <item>Choose Duration:</item>
+        <item>1 Hour</item>
+        <item>1.5 Hour</item>
+        <item>2 Hour</item>
+        <item>2.5 Hour</item>
+        <item>3 Hour</item>
+        <item>3.5 Hour</item>
+    </string-array>
 </resources>
