@@ -123,7 +123,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
-
         public void showBookNowBtn(View view) {
         Intent intent = new Intent(MainActivity.this, PaymentActivity.class);
         startActivity(intent);

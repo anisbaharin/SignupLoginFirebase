@@ -68,10 +68,10 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
             Intent intent = new Intent(ProfileActivity.this, LocationActivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_inbox) {
-            Intent intent = new Intent(ProfileActivity.this, PaymentActivity.class);
+            Intent intent = new Intent(ProfileActivity.this, ReceiptAcitivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_cart) {
-            Intent intent = new Intent(ProfileActivity.this, ReceiptAcitivity.class);
+            Intent intent = new Intent(ProfileActivity.this, PaymentActivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_logout) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);

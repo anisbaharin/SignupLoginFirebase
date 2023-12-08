@@ -53,6 +53,10 @@
             android:name=".ReceiptAcitivity"
             android:exported="false">
         </activity>
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false">
+        </activity>
     </application>
 
 </manifest>

@@ -102,7 +102,7 @@
                 android:layout_width="267dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Enter your name"
+                android:text="Your name"
                 android:textAlignment="viewStart"
                 android:textColor="@color/grey"
                 android:textSize="18sp" />
@@ -140,7 +140,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Enter phone number"
+                android:text="Your phone number"
                 android:textAlignment="viewStart"
                 android:textColor="@color/grey"
                 android:textSize="18sp" />
@@ -178,7 +178,7 @@
                 android:layout_width="143dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Enter your email"
+                android:text="Your email"
                 android:textAlignment="viewStart"
                 android:textColor="@color/grey"
                 android:textSize="18sp" />
