@@ -101,7 +101,7 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
     }
 
     public void openEditProfile(View view) {
-        Intent intent = new Intent(this, EditProfileActivity.class);
+        Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
     }
 }
