@@ -87,10 +87,11 @@ public class LocationActivity extends AppCompatActivity implements NavigationVie
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int itemId = item.getItemId();
 
-        if (itemId == R.id.nav_home) {
+        if (itemId == R.id.nav_location) {
             // Handle home click
         } else if (itemId == R.id.nav_home) {
-            // You are already in the LocationActivity, no need to start it again.
+            Intent intent = new Intent(LocationActivity.this, MainActivity.class);
+            startActivity(intent);
         } else if (itemId == R.id.nav_inbox) {
             Intent intent = new Intent(LocationActivity.this, ReceiptAcitivity.class);
             startActivity(intent);

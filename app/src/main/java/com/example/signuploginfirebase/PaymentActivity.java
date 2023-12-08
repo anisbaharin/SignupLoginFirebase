@@ -65,7 +65,7 @@ public class PaymentActivity extends AppCompatActivity implements NavigationView
 
         int itemId = item.getItemId();
 
-        if (itemId == R.id.nav_home) {
+        if (itemId == R.id.nav_cart) {
             // Handle home click
         } else if (itemId == R.id.nav_home) {
             Intent intent = new Intent(PaymentActivity.this, MainActivity.class);
@@ -74,7 +74,7 @@ public class PaymentActivity extends AppCompatActivity implements NavigationView
             Intent intent = new Intent(PaymentActivity.this, LocationActivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_inbox) {
-            Intent intent = new Intent(PaymentActivity.this, PaymentActivity.class);
+            Intent intent = new Intent(PaymentActivity.this, ReceiptAcitivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_profile) {
             Intent intent = new Intent(PaymentActivity.this, ProfileActivity.class);

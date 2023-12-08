@@ -56,7 +56,7 @@ public class ReceiptAcitivity extends AppCompatActivity implements NavigationVie
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int itemId = item.getItemId();
 
-        if (itemId == R.id.nav_home) {
+        if (itemId == R.id.nav_inbox) {
             // Handle home click
         } else if (itemId == R.id.nav_home) {
             Intent intent = new Intent(ReceiptAcitivity.this, MainActivity.class);
@@ -64,7 +64,7 @@ public class ReceiptAcitivity extends AppCompatActivity implements NavigationVie
         } else if (itemId == R.id.nav_location) {
             Intent intent = new Intent(ReceiptAcitivity.this, LocationActivity.class);
             startActivity(intent);
-        } else if (itemId == R.id.nav_inbox) {
+        } else if (itemId == R.id.nav_cart) {
             Intent intent = new Intent(ReceiptAcitivity.this, PaymentActivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_profile) {
