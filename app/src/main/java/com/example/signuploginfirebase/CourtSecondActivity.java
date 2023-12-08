@@ -21,7 +21,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class CourtSecondActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private FirebaseAuth mAuth;
     DrawerLayout drawerLayout;
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.court_second_activity);
 
         mAuth = FirebaseAuth.getInstance();
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -68,16 +68,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (itemId == R.id.nav_home) {
             // Handle home click
         } else if (itemId == R.id.nav_location) {
-            Intent intent = new Intent(MainActivity.this, LocationActivity.class);
+            Intent intent = new Intent(CourtSecondActivity.this, LocationActivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_inbox) {
-            Intent intent = new Intent(MainActivity.this, ReceiptAcitivity.class);
+            Intent intent = new Intent(CourtSecondActivity.this, ReceiptAcitivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_cart) {
-            Intent intent = new Intent(MainActivity.this, PaymentActivity.class);
+            Intent intent = new Intent(CourtSecondActivity.this, PaymentActivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_profile) {
-            Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+            Intent intent = new Intent(CourtSecondActivity.this, ProfileActivity.class);
             startActivity(intent);
         }else if (itemId == R.id.nav_logout) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             // For example, you can sign the user out and navigate to the login screen
                             // Replace the following with your actual logout logic
                             mAuth.getInstance().signOut();
-                            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                            startActivity(new Intent(CourtSecondActivity.this, LoginActivity.class));
                             finish();
                         }
                     })
@@ -105,16 +105,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
-        public void openDetails1Btn(View view) {
-        Intent intent = new Intent(MainActivity.this, CourtFirstActivity.class);
+    public void showBookBtn(View view) {
+        Intent intent = new Intent(CourtSecondActivity.this, PaymentActivity.class);
         startActivity(intent);
-        }
-        public void openDetails2Btn(View view) {
-        Intent intent = new Intent(MainActivity.this, CourtSecondActivity.class);
-        startActivity(intent);
-        }
-        public void openDetails3Btn(View view) {
-        Intent intent = new Intent(MainActivity.this, CourtThirdActivity.class);
-        startActivity(intent);
-        }
     }
+    public void showBackBtn(View view) {
+        Intent intent = new Intent(CourtSecondActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
+}

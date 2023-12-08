@@ -61,6 +61,18 @@
             android:name=".EditProfileActivity"
             android:exported="false">
         </activity>
+        <activity
+            android:name=".CourtFirstActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".CourtSecondActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".CourtThirdActivity"
+            android:exported="false">
+        </activity>
     </application>
 
 </manifest>

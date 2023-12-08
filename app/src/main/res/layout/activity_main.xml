@@ -126,6 +126,25 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/futsal1" />
 
+                <Button
+                    android:id="@+id/see1btn"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="100dp"
+                    android:backgroundTint="@color/black"
+                    android:fontFamily="sans-serif"
+                    android:letterSpacing="0.2"
+                    android:text="More Details"
+                    android:textSize="12sp"
+                    app:cornerRadius="5dp"
+                    android:onClick="openDetails1Btn"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -140,7 +159,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="times"
-                    android:paddingTop="60dp"
+                    android:paddingTop="30dp"
                     android:paddingBottom="5dp"
                     android:text="COURT 02"
                     android:textAlignment="center"
@@ -168,6 +187,24 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/futsal2" />
 
+                <Button
+                    android:id="@+id/see2btn"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="100dp"
+                    android:backgroundTint="@color/black"
+                    android:fontFamily="sans-serif"
+                    android:letterSpacing="0.2"
+                    android:text="More Details"
+                    android:textSize="12sp"
+                    app:cornerRadius="5dp"
+                    android:onClick="openDetails2Btn"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -181,7 +218,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="times"
-                    android:paddingTop="60dp"
+                    android:paddingTop="30dp"
                     android:paddingBottom="5dp"
                     android:text="COURT 03"
                     android:textAlignment="center"
@@ -209,22 +246,30 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/futsal3" />
 
+                <Button
+                    android:id="@+id/see3btn"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="100dp"
+                    android:backgroundTint="@color/black"
+                    android:fontFamily="sans-serif"
+                    android:letterSpacing="0.2"
+                    android:text="More Details"
+                    android:textSize="12sp"
+                    app:cornerRadius="5dp"
+                    android:onClick="openDetails3Btn"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_margin="5dp"
                     android:alpha="0.5"
                     android:background="@color/white" />
-
-                <Button
-                    android:id="@+id/bookbtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="8dp"
-                    android:onClick="showBookNowBtn"
-                    android:padding="14dp"
-                    android:text="BOOK NOW" />
 
             </LinearLayout>
 
