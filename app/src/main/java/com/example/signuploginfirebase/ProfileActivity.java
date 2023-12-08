@@ -59,7 +59,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int itemId = item.getItemId();
 
-        if (itemId == R.id.nav_home) {
+        if (itemId == R.id.nav_profile) {
             // Handle home click
         } else if (itemId == R.id.nav_home) {
             Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
