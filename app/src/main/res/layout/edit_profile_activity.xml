@@ -89,7 +89,7 @@
 
                 <TextView
                     android:id="@+id/Username"
-                    android:layout_width="181dp"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Name : "
@@ -97,7 +97,7 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <TextView
+                <EditText
                     android:id="@+id/textViewUsername"
                     android:layout_width="267dp"
                     android:layout_height="wrap_content"
@@ -105,7 +105,7 @@
                     android:text="Your name"
                     android:textAlignment="viewStart"
                     android:textColor="@color/grey"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -127,23 +127,23 @@
 
                 <TextView
                     android:id="@+id/phoneNumber"
-                    android:layout_width="78dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
                     android:layout_weight="1"
                     android:text="Phone Number : "
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <TextView
+                <EditText
                     android:id="@+id/textViewPhone"
-                    android:layout_width="wrap_content"
+                    android:layout_width="267dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Your phone number"
                     android:textAlignment="viewStart"
                     android:textColor="@color/grey"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -165,7 +165,7 @@
 
                 <TextView
                     android:id="@+id/Email"
-                    android:layout_width="wrap_content"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Email : "
@@ -173,15 +173,15 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <TextView
+                <EditText
                     android:id="@+id/textViewEmail"
-                    android:layout_width="143dp"
+                    android:layout_width="267dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Your email"
                     android:textAlignment="viewStart"
                     android:textColor="@color/grey"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -196,7 +196,7 @@
             android:gravity="center"
             android:onClick="retrieveProfile"
             android:text="Update"
-            android:textSize="18sp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

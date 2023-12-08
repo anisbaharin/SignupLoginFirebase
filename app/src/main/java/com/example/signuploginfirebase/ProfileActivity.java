@@ -13,27 +13,37 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+import com.google.firebase.firestore.DocumentSnapshot;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ProfileActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     NavigationView navigationView;
+    TextView username, phonenumber, email;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
-
-    private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
+    private FirebaseAuth auth;
+    String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_activity);
 
-        mAuth = FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
+        username = findViewById(R.id.textViewUsername);
+        phonenumber = findViewById(R.id.textViewPhone);
+        email = findViewById(R.id.textViewEmail);
 
         setSupportActionBar(toolbar);
 
@@ -43,7 +53,28 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        navigationView.setCheckedItem(R.id.nav_home);
+        navigationView.setCheckedItem(R.id.nav_profile);
+        loadUserProfile();
+    }
+
+    private void loadUserProfile() {
+        userId = auth.getCurrentUser().getUid();
+        db.collection("user").document(userId)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            username.setText(document.getString("username"));
+                            email.setText(document.getString("email"));
+                            phonenumber.setText(document.getString("phone"));
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Error: No such document", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Error: User could not be found", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     @Override
@@ -83,7 +114,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                             // Perform logout action here
                             // For example, you can sign the user out and navigate to the login screen
                             // Replace the following with your actual logout logic
-                            mAuth.getInstance().signOut();
+                            auth.getInstance().signOut();
                             startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
                             finish();
                         }
