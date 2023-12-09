@@ -18,7 +18,7 @@
             android:layout_width="0dp"
             android:layout_height="42dp"
             android:layout_marginStart="18dp"
-            android:layout_marginBottom="80dp"
+            android:layout_marginBottom="140dp"
             android:letterSpacing="0.05"
             android:text="FutsalCourt"
             android:textColor="@color/black"
@@ -52,26 +52,28 @@
             android:layout_marginEnd="16dp"
             app:layout_constraintStart_toEndOf="@id/futsalname"/>
 
+        <!-- First Row -->
         <LinearLayout
             android:id="@+id/row1"
             android:layout_width="0dp"
             android:layout_height="175dp"
+            android:layout_marginTop="70dp"
             android:orientation="horizontal"
             android:padding="10dp"
-            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/logofutsal">
 
+            <!-- Add Card -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/futsalCard"
+                android:id="@+id/addCard"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardElevation="5dp"
-                app:cardCornerRadius="20dp">
+                app:cardCornerRadius="20dp"
+                app:cardElevation="5dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -81,146 +83,64 @@
                         android:id="@+id/addName"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
-                        android:text="Add"
-                        android:textSize="20sp"
-                        android:textColor="@color/yellow"
-                        android:fontFamily="sans-serif"
-                        android:textAlignment="center"
+                        android:layout_below="@+id/addImage"
                         android:layout_marginTop="10dp"
-                        android:layout_below="@+id/addImage"/>
+                        android:fontFamily="sans-serif"
+                        android:text="Add"
+                        android:textAlignment="center"
+                        android:textColor="@color/yellow"
+                        android:textSize="20sp" />
 
                     <ImageView
                         android:id="@+id/addImage"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@drawable/add"
+                        android:layout_centerHorizontal="true"
                         android:layout_marginTop="15dp"
-                        android:layout_centerHorizontal="true"/>
+                        android:src="@drawable/add" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- First Row -->
+            <!-- Court Card -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/courtCard"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardElevation="5dp"
-                app:cardCornerRadius="20dp">
+                app:cardCornerRadius="20dp"
+                app:cardElevation="5dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/ReadName"
+                        android:id="@+id/courtName"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
-                        android:text="Read"
-                        android:textSize="20sp"
-                        android:textColor="@color/yellow"
-                        android:fontFamily="sans-serif"
+                        android:layout_below="@+id/courtImage"
                         android:layout_marginTop="10dp"
+                        android:fontFamily="sans-serif"
+                        android:text="Court"
                         android:textAlignment="center"
-                        android:layout_below="@+id/readImage"/>
+                        android:textColor="@color/yellow"
+                        android:textSize="20sp" />
 
                     <ImageView
-                        android:id="@+id/readImage"
+                        android:id="@+id/courtImage"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@drawable/read"
+                        android:layout_centerHorizontal="true"
                         android:layout_marginTop="15dp"
-                        android:layout_centerHorizontal="true"/>
+                        android:src="@drawable/court" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
 
-        <!-- Second Row -->
-        <LinearLayout
-            android:id="@+id/row2"
-            android:layout_width="0dp"
-            android:layout_height="175dp"
-            android:orientation="horizontal"
-            android:padding="10dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/row1">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                app:cardElevation="5dp"
-                app:cardCornerRadius="20dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/updateName"
-                        android:layout_width="300dp"
-                        android:layout_height="wrap_content"
-                        android:text="Update"
-                        android:textSize="20sp"
-                        android:textColor="@color/yellow"
-                        android:fontFamily="sans-serif"
-                        android:layout_marginTop="10dp"
-                        android:textAlignment="center"
-                        android:layout_below="@+id/updateImage"/>
-
-                    <ImageView
-                        android:id="@+id/updateImage"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/update"
-                        android:layout_marginTop="15dp"
-                        android:layout_centerHorizontal="true"/>
-
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                app:cardElevation="5dp"
-                app:cardCornerRadius="20dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/deleteName"
-                        android:layout_width="300dp"
-                        android:layout_height="wrap_content"
-                        android:text="Delete"
-                        android:textSize="20sp"
-                        android:textColor="@color/yellow"
-                        android:fontFamily="sans-serif"
-                        android:layout_marginTop="10dp"
-                        android:textAlignment="center"
-                        android:layout_below="@+id/deleteImage"/>
-
-                    <ImageView
-                        android:id="@+id/deleteImage"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/delete"
-                        android:layout_marginTop="15dp"
-                        android:layout_centerHorizontal="true"/>
-
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-
+        <!-- 2nd Row -->
         <LinearLayout
             android:id="@+id/row3"
             android:layout_width="0dp"
@@ -231,9 +151,11 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/row2">
+            app:layout_constraintTop_toBottomOf="@id/row1">
 
+            <!-- Profile Card -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/profileCard"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
@@ -247,7 +169,7 @@
 
                     <TextView
                         android:id="@+id/profileName"
-                        android:layout_width="400dp"
+                        android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:text="Profile"
                         android:textSize="20sp"
@@ -262,6 +184,43 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:src="@drawable/profile"
+                        android:layout_marginTop="15dp"
+                        android:layout_centerHorizontal="true"/>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Sign Out Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/signoutCard"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                app:cardElevation="5dp"
+                app:cardCornerRadius="20dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/signOutName"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:text="Sign Out"
+                        android:textSize="20sp"
+                        android:textColor="@color/yellow"
+                        android:fontFamily="sans-serif"
+                        android:layout_marginTop="10dp"
+                        android:textAlignment="center"
+                        android:layout_below="@+id/signOutImage"/>
+
+                    <ImageView
+                        android:id="@+id/signOutImage"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/signoutadmin"
                         android:layout_marginTop="15dp"
                         android:layout_centerHorizontal="true"/>
 
