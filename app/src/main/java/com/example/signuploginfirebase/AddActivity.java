@@ -52,6 +52,23 @@ public class AddActivity extends AppCompatActivity {
         String courtDetails = addCourtDetails.getText().toString();
         String courtPrice = addCourtPrice.getText().toString();
 
+        if (courtNumber.isEmpty()) {
+            addCourtNumber.setError("Court number cannot be empty");
+            return;
+        }
+        if (courtName.isEmpty()) {
+            addCourtNumber.setError("Court name cannot be empty");
+            return;
+        }
+        if (courtDetails.isEmpty()) {
+            addCourtNumber.setError("Court details cannot be empty");
+            return;
+        }
+        if (courtPrice.isEmpty()) {
+            addCourtNumber.setError("Court price cannot be empty");
+            return;
+        }
+
         Court newCourt = new Court(courtNumber,courtName,courtDetails,courtPrice);
 
         db.collection("courts")
@@ -66,7 +83,7 @@ public class AddActivity extends AppCompatActivity {
 
     }
     public void showBackBtn(View view) {
-        Intent intent = new Intent(AddActivity.this, MainActivity.class);
+        Intent intent = new Intent(AddActivity.this, AdminMainActivity.class);
         startActivity(intent);
     }
 }
