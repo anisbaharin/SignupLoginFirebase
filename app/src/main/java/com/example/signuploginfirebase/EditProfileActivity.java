@@ -142,7 +142,7 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
                             // For example, you can sign the user out and navigate to the login screen
                             // Replace the following with your actual logout logic
                             mAuth.getInstance().signOut();
-                            startActivity(new Intent(EditProfileActivity.this, LoginActivity.class));
+                            startActivity(new Intent(EditProfileActivity.this, UserRoles.class));
                             finish();
                         }
                     })

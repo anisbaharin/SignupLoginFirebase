@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             // For example, you can sign the user out and navigate to the login screen
                             // Replace the following with your actual logout logic
                             mAuth.getInstance().signOut();
-                            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                            startActivity(new Intent(MainActivity.this, UserRoles.class));
                             finish();
                         }
                     })

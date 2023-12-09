@@ -112,7 +112,7 @@ public class LocationActivity extends AppCompatActivity implements NavigationVie
                             // For example, you can sign the user out and navigate to the login screen
                             // Replace the following with your actual logout logic
                             mAuth.getInstance().signOut();
-                            startActivity(new Intent(LocationActivity.this, LoginActivity.class));
+                            startActivity(new Intent(LocationActivity.this, UserRoles.class));
                             finish();
                         }
                     })

@@ -115,7 +115,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                             // For example, you can sign the user out and navigate to the login screen
                             // Replace the following with your actual logout logic
                             auth.getInstance().signOut();
-                            startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
+                            startActivity(new Intent(ProfileActivity.this, UserRoles.class));
                             finish();
                         }
                     })
@@ -133,6 +133,10 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
 
     public void openEditProfile(View view) {
         Intent intent = new Intent(this, EditProfileActivity.class);
+        startActivity(intent);
+    }
+    public void showBackBtn(View view) {
+        Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
         startActivity(intent);
     }
 }

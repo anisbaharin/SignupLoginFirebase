@@ -90,7 +90,7 @@ public class CourtFirstActivity extends AppCompatActivity implements NavigationV
                             // For example, you can sign the user out and navigate to the login screen
                             // Replace the following with your actual logout logic
                             mAuth.getInstance().signOut();
-                            startActivity(new Intent(CourtFirstActivity.this, LoginActivity.class));
+                            startActivity(new Intent(CourtFirstActivity.this, UserRoles.class));
                             finish();
                         }
                     })
