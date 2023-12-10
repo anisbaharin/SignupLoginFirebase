@@ -84,6 +84,14 @@
             android:name=".AddActivity"
             android:exported="false">
         </activity>
+        <activity
+            android:name=".CourtActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".ProfileAdminActivity"
+            android:exported="false">
+        </activity>
     </application>
 
 </manifest>
