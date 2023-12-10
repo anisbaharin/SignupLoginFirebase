@@ -1,31 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:background="@drawable/pagebkg"
-    tools:context=".ProfileAdminActivity">
-
-        <Button
-            android:id="@+id/editbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="100dp"
-            android:backgroundTint="@color/black"
-            android:gravity="center"
-            android:onClick="openEditProfile"
-            android:text="Edit Profile"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/drawer_layout"
+        android:fitsSystemWindows="true"
+        android:background="@drawable/pagebkg"
+        tools:context=".EditProfileAdminActivity">
 
         <ImageView
             android:id="@+id/profileImageView"
@@ -33,7 +17,7 @@
             android:layout_height="156dp"
             android:layout_marginStart="75dp"
             android:layout_marginEnd="75dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="44dp"
             app:layout_constraintBottom_toTopOf="@+id/titleUsername"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -44,7 +28,7 @@
             android:id="@+id/titleUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="45dp"
+            android:layout_marginBottom="40dp"
             android:text="User Profile"
             android:textColor="@color/black"
             android:textSize="25sp"
@@ -58,10 +42,10 @@
             android:id="@+id/linearLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="220dp"
+            android:layout_marginBottom="128dp"
             android:background="@drawable/rounded_background"
             android:orientation="vertical"
-            android:padding="2dp"
+            android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -79,24 +63,23 @@
 
                 <TextView
                     android:id="@+id/Username"
-                    android:layout_width="181dp"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="NAME : "
-                    android:textAlignment="center"
+                    android:text="Name : "
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <TextView
+                <EditText
                     android:id="@+id/textViewUsername"
                     android:layout_width="267dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Your Name"
-                    android:textAlignment="center"
+                    android:hint="Enter new name"
+                    android:textAlignment="viewStart"
                     android:textColor="@color/grey"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -118,24 +101,23 @@
 
                 <TextView
                     android:id="@+id/phoneNumber"
-                    android:layout_width="78dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
                     android:layout_weight="1"
-                    android:text="PHONE NUMBER :"
-                    android:textAlignment="center"
+                    android:text="Phone Number : "
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <TextView
+                <EditText
                     android:id="@+id/textViewPhone"
-                    android:layout_width="wrap_content"
+                    android:layout_width="267dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Your phone number"
-                    android:textAlignment="center"
+                    android:hint="Enter new phone number"
+                    android:textAlignment="viewStart"
                     android:textColor="@color/grey"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -157,39 +139,55 @@
 
                 <TextView
                     android:id="@+id/Email"
-                    android:layout_width="wrap_content"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="EMAIL :"
-                    android:textAlignment="center"
+                    android:text="Email : "
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <TextView
+                <EditText
                     android:id="@+id/textViewEmail"
-                    android:layout_width="143dp"
+                    android:layout_width="267dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Your email"
-                    android:textAlignment="center"
+                    android:hint="Enter new email"
+                    android:textAlignment="viewStart"
                     android:textColor="@color/grey"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
         </LinearLayout>
 
-        <Button
-            android:id="@+id/backbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
-            android:backgroundTint="@color/black"
-            android:gravity="center"
-            android:onClick="showBackBtn"
-            android:text="BACK"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+    <Button
+        android:id="@+id/retrievebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="@color/black"
+        android:gravity="center"
+        android:onClick="retrieveProfile"
+        android:text="Update"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.96"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/backbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="@color/black"
+        android:gravity="center"
+        android:onClick="showBackBtn"
+        android:text="BACK"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.245"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

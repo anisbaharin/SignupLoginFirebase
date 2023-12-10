@@ -162,4 +162,9 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
         Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
     }
+
+    public void showBackBtn(View view) {
+        Intent intent = new Intent(EditProfileActivity.this, AdminMainActivity.class);
+        startActivity(intent);
+    }
 }
