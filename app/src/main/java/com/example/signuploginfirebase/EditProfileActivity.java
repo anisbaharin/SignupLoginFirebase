@@ -128,7 +128,7 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
             Intent intent = new Intent(EditProfileActivity.this, LocationActivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_inbox) {
-            Intent intent = new Intent(EditProfileActivity.this, ReceiptAcitivity.class);
+            Intent intent = new Intent(EditProfileActivity.this, ReceiptActivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_cart) {
             Intent intent = new Intent(EditProfileActivity.this, PaymentActivity.class);

@@ -2,14 +2,12 @@ package com.example.signuploginfirebase;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.signuploginfirebase.databinding.ActivitySignUpBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -21,37 +19,33 @@ import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
 
+    private ActivitySignUpBinding binding;
+
     private FirebaseAuth auth;
     private FirebaseFirestore db;
-    private EditText signupEmail, signupPhone, signupUsername, signupPassword;
-    private TextView loginRedirectText;
-    private Button signupButton;
+
     String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        binding = ActivitySignUpBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         auth = FirebaseAuth.getInstance();
-        signupEmail = findViewById(R.id.signup_email);
-        signupPhone = findViewById(R.id.signup_phonenumber);
-        signupUsername = findViewById(R.id.signup_username);
-        signupPassword = findViewById(R.id.signup_password);
-        signupButton = findViewById(R.id.signup_button);
-        loginRedirectText = findViewById(R.id.loginRedirectText);
+
         db = FirebaseFirestore.getInstance();
 
-        signupButton.setOnClickListener(view -> {
-            String user = signupEmail.getText().toString().trim();
-            String pass = signupPassword.getText().toString().trim();
+        binding.signupButton.setOnClickListener(view -> {
+            String user = binding.signupEmail.getText().toString().trim();
+            String pass = binding.signupPassword.getText().toString().trim();
 
             if (user.isEmpty()) {
-                signupEmail.setError("Email cannot be empty");
+                binding.signupEmail.setError("Email cannot be empty");
                 return;
             }
             if (pass.isEmpty()) {
-                signupPassword.setError("Password cannot be empty");
+                binding.signupPassword.setError("Password cannot be empty");
                 return;
             }
 
@@ -62,10 +56,10 @@ public class SignUpActivity extends AppCompatActivity {
                         userId = auth.getCurrentUser().getUid();
 
                         Map<String, Object> userMap = new HashMap<>();
-                        userMap.put("email", signupEmail.getText().toString().trim());
-                        userMap.put("phone", signupPhone.getText().toString().trim());
-                        userMap.put("username", signupUsername.getText().toString().trim());
-                        userMap.put("password", signupPassword.getText().toString().trim());
+                        userMap.put("email", binding.signupEmail.getText().toString().trim());
+                        userMap.put("phone", binding.signupPhonenumber.getText().toString().trim());
+                        userMap.put("username", binding.signupUsername.getText().toString().trim());
+                        userMap.put("password", binding.signupPassword.getText().toString().trim());
 
                         db.collection("user")
                                 .document(userId)
@@ -75,7 +69,12 @@ public class SignUpActivity extends AppCompatActivity {
                                     finish();
                                 })
                                 .addOnFailureListener(e ->
-                                        Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                                        Toast.makeText(
+                                                getApplicationContext(),
+                                                "Error: " + e.getMessage(),
+                                                Toast.LENGTH_SHORT
+                                        ).show()
+                                );
                     } else {
                         Toast.makeText(SignUpActivity.this, "Your email or phone number not valid", Toast.LENGTH_SHORT).show();
                     }
@@ -83,7 +82,7 @@ public class SignUpActivity extends AppCompatActivity {
             });
         });
 
-        loginRedirectText.setOnClickListener(view ->
+        binding.loginRedirectText.setOnClickListener(view ->
                 startActivity(new Intent(SignUpActivity.this, LoginActivity.class)));
     }
 }

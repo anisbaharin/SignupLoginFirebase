@@ -97,7 +97,7 @@ public class PaymentActivity extends AppCompatActivity implements NavigationView
             Intent intent = new Intent(PaymentActivity.this, LocationActivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_inbox) {
-            Intent intent = new Intent(PaymentActivity.this, ReceiptAcitivity.class);
+            Intent intent = new Intent(PaymentActivity.this, ReceiptActivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_profile) {
             Intent intent = new Intent(PaymentActivity.this, ProfileActivity.class);
@@ -131,7 +131,7 @@ public class PaymentActivity extends AppCompatActivity implements NavigationView
     }
 
     public void showProceedBtn(View view) {
-        Intent intent = new Intent(PaymentActivity.this, ReceiptAcitivity.class);
+        Intent intent = new Intent(PaymentActivity.this, ReceiptActivity.class);
         startActivity(intent);
     }
 

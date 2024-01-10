@@ -68,7 +68,7 @@ public class CourtSecondActivity extends AppCompatActivity implements Navigation
             Intent intent = new Intent(CourtSecondActivity.this, LocationActivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_inbox) {
-            Intent intent = new Intent(CourtSecondActivity.this, ReceiptAcitivity.class);
+            Intent intent = new Intent(CourtSecondActivity.this, ReceiptActivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_cart) {
             Intent intent = new Intent(CourtSecondActivity.this, PaymentActivity.class);

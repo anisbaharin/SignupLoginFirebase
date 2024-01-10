@@ -85,7 +85,7 @@ public class LocationActivity extends AppCompatActivity implements NavigationVie
             Intent intent = new Intent(LocationActivity.this, MainActivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_inbox) {
-            Intent intent = new Intent(LocationActivity.this, ReceiptAcitivity.class);
+            Intent intent = new Intent(LocationActivity.this, ReceiptActivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_cart) {
             Intent intent = new Intent(LocationActivity.this, PaymentActivity.class);

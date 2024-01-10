@@ -53,7 +53,7 @@
             android:exported="false">
         </activity>
         <activity
-            android:name=".ReceiptAcitivity"
+            android:name=".ReceiptActivity"
             android:exported="false">
         </activity>
         <activity

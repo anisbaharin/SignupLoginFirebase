@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(MainActivity.this, LocationActivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_inbox) {
-            Intent intent = new Intent(MainActivity.this, ReceiptAcitivity.class);
+            Intent intent = new Intent(MainActivity.this, ReceiptActivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_cart) {
             Intent intent = new Intent(MainActivity.this, PaymentActivity.class);

@@ -24,7 +24,9 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
     private ProfileActivityBinding binding;
 
     private FirebaseFirestore db;
+
     private FirebaseAuth auth;
+
     String userId;
 
     @Override
@@ -46,6 +48,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                 R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close
         );
+
         binding.drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         binding.navView.setNavigationItemSelectedListener(this);
@@ -104,7 +107,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
             Intent intent = new Intent(ProfileActivity.this, LocationActivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_inbox) {
-            Intent intent = new Intent(ProfileActivity.this, ReceiptAcitivity.class);
+            Intent intent = new Intent(ProfileActivity.this, ReceiptActivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_cart) {
             Intent intent = new Intent(ProfileActivity.this, PaymentActivity.class);

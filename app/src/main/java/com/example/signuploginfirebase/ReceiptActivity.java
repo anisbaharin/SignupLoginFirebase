@@ -17,7 +17,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class ReceiptAcitivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class ReceiptActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
     NavigationView navigationView;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
@@ -60,16 +61,16 @@ public class ReceiptAcitivity extends AppCompatActivity implements NavigationVie
         if (itemId == R.id.nav_inbox) {
             // Handle home click
         } else if (itemId == R.id.nav_home) {
-            Intent intent = new Intent(ReceiptAcitivity.this, MainActivity.class);
+            Intent intent = new Intent(ReceiptActivity.this, MainActivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_location) {
-            Intent intent = new Intent(ReceiptAcitivity.this, LocationActivity.class);
+            Intent intent = new Intent(ReceiptActivity.this, LocationActivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_cart) {
-            Intent intent = new Intent(ReceiptAcitivity.this, PaymentActivity.class);
+            Intent intent = new Intent(ReceiptActivity.this, PaymentActivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_profile) {
-            Intent intent = new Intent(ReceiptAcitivity.this, ProfileActivity.class);
+            Intent intent = new Intent(ReceiptActivity.this, ProfileActivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_logout) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -81,8 +82,8 @@ public class ReceiptAcitivity extends AppCompatActivity implements NavigationVie
                             // Perform logout action here
                             // For example, you can sign the user out and navigate to the login screen
                             // Replace the following with your actual logout logic
-                            mAuth.getInstance().signOut();
-                            startActivity(new Intent(ReceiptAcitivity.this, UserRoles.class));
+                            mAuth.signOut();
+                            startActivity(new Intent(ReceiptActivity.this, UserRoles.class));
                             finish();
                         }
                     })
@@ -98,12 +99,12 @@ public class ReceiptAcitivity extends AppCompatActivity implements NavigationVie
         return true;
     }
 
-//    public void showProceedBtn(View view) {
+    //    public void showProceedBtn(View view) {
 //        Intent intent = new Intent(ReceiptAcitivity.this, DetailsActivity.class);
 //        startActivity(intent);
 //    }
     public void showBackBtn(View view) {
-        Intent intent = new Intent(ReceiptAcitivity.this, PaymentActivity.class);
+        Intent intent = new Intent(ReceiptActivity.this, PaymentActivity.class);
         startActivity(intent);
     }
 }

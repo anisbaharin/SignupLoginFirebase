@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.signuploginfirebase.databinding.ActivitySignupAdminBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -21,37 +22,33 @@ import java.util.Map;
 
 public class SignUpAdminActivity extends AppCompatActivity {
 
+    private ActivitySignupAdminBinding binding;
+
     private FirebaseAuth auth;
     private FirebaseFirestore db;
-    private EditText signupEmail, signupPhone, signupUsername, signupPassword;
-    private TextView loginRedirectText;
-    private Button signupButton;
+
     String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup_admin);
+        binding = ActivitySignupAdminBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         auth = FirebaseAuth.getInstance();
-        signupEmail = findViewById(R.id.signup_email_admin);
-        signupPhone = findViewById(R.id.signup_phonenumber_admin);
-        signupUsername = findViewById(R.id.signup_username_admin);
-        signupPassword = findViewById(R.id.signup_password_admin);
-        signupButton = findViewById(R.id.signup_button);
-        loginRedirectText = findViewById(R.id.loginRedirectText);
+
         db = FirebaseFirestore.getInstance();
 
-        signupButton.setOnClickListener(view -> {
-            String user = signupEmail.getText().toString().trim();
-            String pass = signupPassword.getText().toString().trim();
+        binding.signupButton.setOnClickListener(view -> {
+            String user = binding.signupEmailAdmin.getText().toString().trim();
+            String pass = binding.signupPasswordAdmin.getText().toString().trim();
 
             if (user.isEmpty()) {
-                signupEmail.setError("Email cannot be empty");
+                binding.signupEmailAdmin.setError("Email cannot be empty");
                 return;
             }
             if (pass.isEmpty()) {
-                signupPassword.setError("Password cannot be empty");
+                binding.signupPasswordAdmin.setError("Password cannot be empty");
                 return;
             }
 
@@ -62,10 +59,10 @@ public class SignUpAdminActivity extends AppCompatActivity {
                         userId = auth.getCurrentUser().getUid();
 
                         Map<String, Object> userMap = new HashMap<>();
-                        userMap.put("email", signupEmail.getText().toString().trim());
-                        userMap.put("phone", signupPhone.getText().toString().trim());
-                        userMap.put("username", signupUsername.getText().toString().trim());
-                        userMap.put("password", signupPassword.getText().toString().trim());
+                        userMap.put("email", binding.signupEmailAdmin.getText().toString().trim());
+                        userMap.put("phone", binding.signupPhonenumberAdmin.getText().toString().trim());
+                        userMap.put("username", binding.signupUsernameAdmin.getText().toString().trim());
+                        userMap.put("password", binding.signupPasswordAdmin.getText().toString().trim());
 
                         db.collection("admin")
                                 .document(userId)
@@ -83,7 +80,7 @@ public class SignUpAdminActivity extends AppCompatActivity {
             });
         });
 
-        loginRedirectText.setOnClickListener(view ->
+        binding.loginRedirectText.setOnClickListener(view ->
                 startActivity(new Intent(SignUpAdminActivity.this, AdminLoginActivity.class)));
     }
 }
