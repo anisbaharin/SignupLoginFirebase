@@ -6,61 +6,53 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.signuploginfirebase.databinding.LocationActivityBinding;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LocationActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    EditText editTextSource;
-    EditText editTextDestination;
-    Button button;
-    NavigationView navigationView;
-    Toolbar toolbar;
-    DrawerLayout drawerLayout;
+    private LocationActivityBinding binding;
+
     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.location_activity);
+        binding = LocationActivityBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         mAuth = FirebaseAuth.getInstance();
-        drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
-        toolbar = findViewById(R.id.toolbar);
 
-        editTextSource = findViewById(R.id.source);
-        editTextDestination = findViewById(R.id.destination);
-        button = findViewById(R.id.btnSubmit);
+        setSupportActionBar(binding.toolbar);
 
-        setSupportActionBar(toolbar);
-
-        navigationView.bringToFront();
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawerLayout.addDrawerListener(toggle);
+        binding.navView.bringToFront();
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this,
+                binding.drawerLayout,
+                binding.toolbar,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close
+        );
+        binding.drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
-
-        navigationView.setCheckedItem(R.id.nav_home);
+        binding.navView.setNavigationItemSelectedListener(this);
+        binding.navView.setCheckedItem(R.id.nav_home);
 
         // Set onClickListener for the button
-        button.setOnClickListener(new View.OnClickListener() {
+        binding.btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String source = editTextSource.getText().toString();
-                String destination = editTextDestination.getText().toString();
+                String source = binding.edtSource.getText().toString();
+                String destination = binding.edtDestination.getText().toString();
                 if (source.equals("") && destination.equals("")) {
                     Toast.makeText(getApplicationContext(), "Enter both source & destination", Toast.LENGTH_SHORT).show();
                 } else {
@@ -76,8 +68,8 @@ public class LocationActivity extends AppCompatActivity implements NavigationVie
 
     @Override
     public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
+        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            binding.drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
@@ -125,7 +117,7 @@ public class LocationActivity extends AppCompatActivity implements NavigationVie
                     .show();
         }
 
-        drawerLayout.closeDrawer(GravityCompat.START);
+        binding.drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 }

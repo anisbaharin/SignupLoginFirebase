@@ -1,22 +1,19 @@
 package com.example.signuploginfirebase;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+
+import com.example.signuploginfirebase.databinding.EditProfileActivityBinding;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,38 +21,36 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class EditProfileActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    NavigationView navigationView;
-    Toolbar toolbar;
-    DrawerLayout drawerLayout;
+    private EditProfileActivityBinding binding;
 
     private FirebaseAuth mAuth;
-    private EditText editUsername, editPhone, editEmail;
     private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        binding = EditProfileActivityBinding.inflate(getLayoutInflater());
         setContentView(R.layout.edit_profile_activity);
 
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
-        drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
-        toolbar = findViewById(R.id.toolbar);
-        editUsername = findViewById(R.id.textViewUsername);
-        editPhone = findViewById(R.id.textViewPhone);
-        editEmail = findViewById(R.id.textViewEmail);
 
-        setSupportActionBar(toolbar);
+        setSupportActionBar(binding.toolbar);
 
-        navigationView.bringToFront();
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawerLayout.addDrawerListener(toggle);
+        binding.navView.bringToFront();
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this,
+                binding.drawerLayout,
+                binding.toolbar,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close
+        );
+        binding.drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
+        binding.navView.setNavigationItemSelectedListener(this);
 
-        navigationView.setCheckedItem(R.id.nav_home);
-        FirebaseUser currentUser=mAuth.getCurrentUser();
+        binding.navView.setCheckedItem(R.id.nav_home);
+        FirebaseUser currentUser = mAuth.getCurrentUser();
 
         if (currentUser != null) {
             String userID = currentUser.getUid();
@@ -69,9 +64,9 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
                             String email = documentSnapshot.getString("email");
                             String phone = documentSnapshot.getString("phone");
 
-                            editUsername.setText(username);
-                            editEmail.setText(email);
-                            editPhone.setText(phone);
+                            binding.edtUsername.setText(username);
+                            binding.edtEmail.setText(email);
+                            binding.edtPhone.setText(phone);
                         }
                     })
                     .addOnFailureListener(e -> {
@@ -79,23 +74,30 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
                     });
         }
 
-        Button saveButton = findViewById(R.id.retrievebtn);
-        saveButton.setOnClickListener(new View.OnClickListener() {
+        binding.saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String newUsername = editUsername.getText().toString();
-                String newEmail = editEmail.getText().toString();
-                String newPhone = editPhone.getText().toString();
+                String newUsername = binding.edtUsername.getText().toString();
+                String newEmail = binding.edtEmail.getText().toString();
+                String newPhone = binding.edtPhone.getText().toString();
 
-                updateProfile(currentUser.getUid(),newUsername,newEmail,newPhone);
+                if (currentUser != null) {
+                    updateProfile(currentUser.getUid(), newUsername, newEmail, newPhone);
+                } else {
+                    Toast.makeText(
+                            EditProfileActivity.this,
+                            "No user found",
+                            Toast.LENGTH_SHORT
+                    ).show();
+                }
             }
         });
     }
 
-    private void updateProfile(String userID, String newUsername, String newEmail, String newPhone){
+    private void updateProfile(String userID, String newUsername, String newEmail, String newPhone) {
         db.collection("user")
                 .document(userID)
-                .update("username",newUsername,"email", newEmail, "phone", newPhone)
+                .update("username", newUsername, "email", newEmail, "phone", newPhone)
                 .addOnSuccessListener(aVoid -> {
                     finish();
                 })
@@ -106,8 +108,8 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
 
     @Override
     public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
+        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            binding.drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
@@ -141,7 +143,7 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
                             // Perform logout action here
                             // For example, you can sign the user out and navigate to the login screen
                             // Replace the following with your actual logout logic
-                            mAuth.getInstance().signOut();
+                            mAuth.signOut();
                             startActivity(new Intent(EditProfileActivity.this, UserRoles.class));
                             finish();
                         }
@@ -154,17 +156,20 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
                     })
                     .show();
         }
-        drawerLayout.closeDrawer(GravityCompat.START);
+
+        binding.drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 
     public void openEditProfile(View view) {
         Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
+        finishAffinity();
     }
 
     public void showBackBtn(View view) {
         Intent intent = new Intent(EditProfileActivity.this, AdminMainActivity.class);
         startActivity(intent);
+        finishAffinity();
     }
 }

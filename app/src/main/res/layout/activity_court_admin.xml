@@ -1,227 +1,232 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/pagebkg"
-    tools:context=".CourtActivity">
+    android:paddingHorizontal="16dp"
+    tools:context=".AdminCourtActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo">
+
+    </ImageView>
+
+    <!-- ROW 1-->
+    <TextView
+        android:id="@+id/typeText"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="times"
+        android:text="LIST COURT"
+        android:layout_marginTop="24dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:ignore="HardcodedText" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="48dp"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/logo">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/courtRV"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        tools:listitem="@layout/court_itemview"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/typeText" />
 
-        </ImageView>
+    <!--        <LinearLayout-->
+    <!--            android:id="@+id/linearLayout1"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginStart="8dp"-->
+    <!--            android:layout_marginEnd="8dp"-->
+    <!--            android:background="@drawable/rounded_background"-->
+    <!--            android:orientation="vertical"-->
+    <!--            android:padding="2dp"-->
+    <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintHorizontal_bias="0.486"-->
+    <!--            app:layout_constraintStart_toStartOf="parent">-->
 
-        <!-- ROW 1-->
-        <TextView
-            android:id="@+id/typeText"
-            android:layout_width="200dp"
-            android:layout_height="90dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
-            android:fontFamily="times"
-            android:paddingTop="40dp"
-            android:paddingBottom="10dp"
-            android:text="LIST COURT"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+    <!--            <LinearLayout-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:layout_marginLeft="10dp"-->
+    <!--                android:layout_marginTop="10dp"-->
+    <!--                android:layout_marginRight="10dp"-->
+    <!--                android:layout_marginBottom="10dp"-->
+    <!--                android:orientation="horizontal"-->
+    <!--                android:padding="8dp">-->
 
-        <LinearLayout
-            android:id="@+id/linearLayout1"
-            android:layout_width="340dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/rounded_background"
-            android:orientation="vertical"
-            android:padding="2dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.486"
-            app:layout_constraintStart_toStartOf="parent">
+    <!--                <TextView-->
+    <!--                    android:id="@+id/number1"-->
+    <!--                    android:layout_width="190dp"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_weight="1"-->
+    <!--                    android:text="NUMBER  "-->
+    <!--                    android:textAlignment="center"-->
+    <!--                    android:textColor="@color/black"-->
+    <!--                    android:textSize="17sp"-->
+    <!--                    android:textStyle="bold" />-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal"
-                android:padding="8dp">
+    <!--                <TextView-->
+    <!--                    android:id="@+id/courtNumberTV"-->
+    <!--                    android:layout_width="267dp"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_weight="1"-->
+    <!--                    android:text="Court Number"-->
+    <!--                    android:textAlignment="center"-->
+    <!--                    android:textColor="@color/grey"-->
+    <!--                    android:textSize="17sp" />-->
+    <!--            </LinearLayout>-->
 
-                <TextView
-                    android:id="@+id/number1"
-                    android:layout_width="190dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="NUMBER  "
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
+    <!--            <androidx.appcompat.widget.AppCompatImageView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="1dp"-->
+    <!--                android:layout_margin="10dp"-->
+    <!--                android:alpha="0.5"-->
+    <!--                android:background="@color/black" />-->
 
-                <TextView
-                    android:id="@+id/textViewNumber1"
-                    android:layout_width="267dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Court Number"
-                    android:textAlignment="center"
-                    android:textColor="@color/grey"
-                    android:textSize="17sp" />
-            </LinearLayout>
+    <!--            <LinearLayout-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:layout_marginLeft="10dp"-->
+    <!--                android:layout_marginTop="10dp"-->
+    <!--                android:layout_marginRight="10dp"-->
+    <!--                android:layout_marginBottom="10dp"-->
+    <!--                android:orientation="horizontal"-->
+    <!--                android:padding="8dp">-->
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="10dp"
-                android:alpha="0.5"
-                android:background="@color/black" />
+    <!--                <TextView-->
+    <!--                    android:id="@+id/name1"-->
+    <!--                    android:layout_width="23dp"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_weight="1"-->
+    <!--                    android:text="NAME"-->
+    <!--                    android:textAlignment="center"-->
+    <!--                    android:textColor="@color/black"-->
+    <!--                    android:textSize="17sp"-->
+    <!--                    android:textStyle="bold" />-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal"
-                android:padding="8dp">
+    <!--                <TextView-->
+    <!--                    android:id="@+id/courtNameTV"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_weight="1"-->
+    <!--                    android:text="Court Name"-->
+    <!--                    android:textAlignment="center"-->
+    <!--                    android:textColor="@color/grey"-->
+    <!--                    android:textSize="17sp" />-->
+    <!--            </LinearLayout>-->
 
-                <TextView
-                    android:id="@+id/name1"
-                    android:layout_width="23dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="NAME"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
+    <!--            <androidx.appcompat.widget.AppCompatImageView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="1dp"-->
+    <!--                android:layout_margin="10dp"-->
+    <!--                android:alpha="0.5"-->
+    <!--                android:background="@color/black" />-->
 
-                <TextView
-                    android:id="@+id/textViewName1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Court Name"
-                    android:textAlignment="center"
-                    android:textColor="@color/grey"
-                    android:textSize="17sp" />
-            </LinearLayout>
+    <!--            <LinearLayout-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:layout_marginLeft="10dp"-->
+    <!--                android:layout_marginTop="10dp"-->
+    <!--                android:layout_marginRight="10dp"-->
+    <!--                android:layout_marginBottom="10dp"-->
+    <!--                android:orientation="horizontal"-->
+    <!--                android:padding="8dp">-->
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="10dp"
-                android:alpha="0.5"
-                android:background="@color/black" />
+    <!--                <TextView-->
+    <!--                    android:id="@+id/details1"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_weight="1"-->
+    <!--                    android:text="DETAILS"-->
+    <!--                    android:textAlignment="center"-->
+    <!--                    android:textColor="@color/black"-->
+    <!--                    android:textSize="17sp"-->
+    <!--                    android:textStyle="bold" />-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal"
-                android:padding="8dp">
+    <!--                <TextView-->
+    <!--                    android:id="@+id/courtDetailsTV"-->
+    <!--                    android:layout_width="143dp"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_weight="1"-->
+    <!--                    android:text="Court Details"-->
+    <!--                    android:textAlignment="center"-->
+    <!--                    android:textColor="@color/grey"-->
+    <!--                    android:textSize="17sp" />-->
+    <!--            </LinearLayout>-->
 
-                <TextView
-                    android:id="@+id/details1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="DETAILS"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
+    <!--            <androidx.appcompat.widget.AppCompatImageView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="1dp"-->
+    <!--                android:layout_margin="10dp"-->
+    <!--                android:alpha="0.5"-->
+    <!--                android:background="@color/black" />-->
 
-                <TextView
-                    android:id="@+id/textViewDetails1"
-                    android:layout_width="143dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Court Details"
-                    android:textAlignment="center"
-                    android:textColor="@color/grey"
-                    android:textSize="17sp" />
-            </LinearLayout>
+    <!--            <LinearLayout-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:layout_marginLeft="10dp"-->
+    <!--                android:layout_marginTop="10dp"-->
+    <!--                android:layout_marginRight="10dp"-->
+    <!--                android:layout_marginBottom="10dp"-->
+    <!--                android:orientation="horizontal"-->
+    <!--                android:padding="8dp">-->
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="10dp"
-                android:alpha="0.5"
-                android:background="@color/black" />
+    <!--                <TextView-->
+    <!--                    android:id="@+id/price1"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_weight="1"-->
+    <!--                    android:text="PRICE"-->
+    <!--                    android:textAlignment="center"-->
+    <!--                    android:textColor="@color/black"-->
+    <!--                    android:textSize="17sp"-->
+    <!--                    android:textStyle="bold" />-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal"
-                android:padding="8dp">
+    <!--                <TextView-->
+    <!--                    android:id="@+id/courtPriceTV"-->
+    <!--                    android:layout_width="143dp"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_weight="1"-->
+    <!--                    android:text="Court Price"-->
+    <!--                    android:textAlignment="center"-->
+    <!--                    android:textColor="@color/grey"-->
+    <!--                    android:textSize="17sp" />-->
+    <!--            </LinearLayout>-->
+    <!--        </LinearLayout>-->
 
-                <TextView
-                    android:id="@+id/price1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="PRICE"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
+    <Button
+        android:id="@+id/backBtn"
+        android:layout_width="130dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/black"
+        android:fontFamily="sans-serif"
+        android:letterSpacing="0.2"
+        android:onClick="showBackBtn"
+        android:text="BACK"
+        android:textSize="20sp"
+        app:cornerRadius="10dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-                <TextView
-                    android:id="@+id/textViewPrice1"
-                    android:layout_width="143dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Court Price"
-                    android:textAlignment="center"
-                    android:textColor="@color/grey"
-                    android:textSize="17sp" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/backBtn"
-            android:layout_width="130dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="164dp"
-            android:layout_marginEnd="160dp"
-            android:backgroundTint="@color/black"
-            android:fontFamily="sans-serif"
-            android:letterSpacing="0.2"
-            android:onClick="showBackBtn"
-            android:text="BACK"
-            android:textSize="20sp"
-            app:cornerRadius="10dp" />
-
-    </LinearLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,25 +1,33 @@
 package com.example.signuploginfirebase;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.signuploginfirebase.databinding.UserRolesBinding;
 
 public class UserRoles extends AppCompatActivity {
+
+    private UserRolesBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_roles);
+        binding = UserRolesBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        binding.btnAdmin.setOnClickListener(v -> openAdminLogin());
+        binding.btnCustomer.setOnClickListener(v -> openCustomerLogin());
 
     }
-        public void openAdminSignup(View view){
-            Intent intent = new Intent(this,SignUpAdminActivity.class);
-            startActivity(intent);
-        }
 
-        public void openCustomerSignup(View view){
-            Intent intent = new Intent(this,SignUpActivity.class);
-            startActivity(intent);
-        }
+    private void openAdminLogin() {
+        startActivity(new Intent(UserRoles.this, AdminLoginActivity.class));
+    }
+
+    private void openCustomerLogin() {
+        startActivity(new Intent(UserRoles.this, LoginActivity.class));
+    }
+
 }

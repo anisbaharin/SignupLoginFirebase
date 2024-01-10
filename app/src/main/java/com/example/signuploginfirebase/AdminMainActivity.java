@@ -32,7 +32,7 @@ public class AdminMainActivity extends AppCompatActivity {
         courtCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AdminMainActivity.this, CourtActivity.class);
+                Intent intent = new Intent(AdminMainActivity.this, AdminCourtActivity.class);
                 startActivity(intent);
             }
         });

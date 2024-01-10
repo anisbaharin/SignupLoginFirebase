@@ -3,31 +3,28 @@ package com.example.signuploginfirebase;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.signuploginfirebase.databinding.ActivityAddBinding;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class AddActivity extends AppCompatActivity {
 
+    private ActivityAddBinding binding;
+
     private FirebaseFirestore db;
-    private EditText addCourtNumber, addCourtName, addCourtDetails, addCourtPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add);
+        binding = ActivityAddBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         db = FirebaseFirestore.getInstance();
 
-        addCourtNumber = findViewById(R.id.add_court_no);
-        addCourtName = findViewById(R.id.add_court_name);
-        addCourtDetails = findViewById(R.id.add_court_details);
-        addCourtPrice = findViewById(R.id.add_court_price);
-
-        Button saveButton = findViewById(R.id.addBtn);
-        saveButton.setOnClickListener(new View.OnClickListener() {
+        binding.saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 saveCourt();
@@ -36,25 +33,25 @@ public class AddActivity extends AppCompatActivity {
     }
 
     private void saveCourt() {
-        String courtNumber = addCourtNumber.getText().toString();
-        String courtName = addCourtName.getText().toString();
-        String courtDetails = addCourtDetails.getText().toString();
-        String courtPrice = addCourtPrice.getText().toString();
+        String courtNumber = binding.addCourtNo.getText().toString();
+        String courtName = binding.addCourtName.getText().toString();
+        String courtDetails = binding.addCourtDetails.getText().toString();
+        String courtPrice = binding.addCourtPrice.getText().toString();
 
         if (courtNumber.isEmpty()) {
-            addCourtNumber.setError("Court number cannot be empty");
+            binding.addCourtNo.setError("Court number cannot be empty");
             return;
         }
         if (courtName.isEmpty()) {
-            addCourtNumber.setError("Court name cannot be empty");
+            binding.addCourtName.setError("Court name cannot be empty");
             return;
         }
         if (courtDetails.isEmpty()) {
-            addCourtNumber.setError("Court details cannot be empty");
+            binding.addCourtDetails.setError("Court details cannot be empty");
             return;
         }
         if (courtPrice.isEmpty()) {
-            addCourtNumber.setError("Court price cannot be empty");
+            binding.addCourtPrice.setError("Court price cannot be empty");
             return;
         }
 

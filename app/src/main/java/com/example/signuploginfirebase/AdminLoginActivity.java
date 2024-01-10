@@ -71,4 +71,12 @@ public class AdminLoginActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(auth.getCurrentUser() != null){
+            startActivity(new Intent(this, AdminMainActivity.class));
+        }
+    }
 }

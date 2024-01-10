@@ -35,20 +35,20 @@
             app:navigationIcon="@drawable/menu" />
 
     <EditText
-        android:id="@+id/source"
+        android:id="@+id/edtSource"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="27dp"
         android:hint="Enter your current location"
         android:padding="18dp"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/destination"
+        app:layout_constraintBottom_toTopOf="@+id/edtDestination"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <EditText
-        android:id="@+id/destination"
+        android:id="@+id/edtDestination"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="53dp"
@@ -58,7 +58,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btnSubmit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/source" />
+        app:layout_constraintTop_toBottomOf="@+id/edtSource" />
 
     <Button
         android:id="@+id/btnSubmit"
@@ -71,7 +71,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/destination" />
+        app:layout_constraintTop_toBottomOf="@+id/edtDestination" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

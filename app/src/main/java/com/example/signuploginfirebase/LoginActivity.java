@@ -1,17 +1,15 @@
 package com.example.signuploginfirebase;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.signuploginfirebase.databinding.ActivityLoginBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
@@ -19,31 +17,27 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private ActivityLoginBinding binding;
+
     private FirebaseAuth auth;
-    private EditText loginEmail, loginPassword;
-    private TextView signupRedirectText;
-    private Button loginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         auth = FirebaseAuth.getInstance();
-        loginButton = findViewById(R.id.login_button);
-        loginEmail = findViewById(R.id.login_email);
-        loginPassword = findViewById(R.id.login_password);
-        signupRedirectText = findViewById(R.id.signupRedirectText);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        binding.loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = loginEmail.getText().toString();
-                String pass = loginPassword.getText().toString();
+                String email = binding.loginEmail.getText().toString();
+                String pass = binding.loginPassword.getText().toString();
 
                 if (!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     if (!pass.isEmpty()) {
-                        auth.signInWithEmailAndPassword(email,pass)
+                        auth.signInWithEmailAndPassword(email, pass)
                                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                     @Override
                                     public void onSuccess(AuthResult authResult) {
@@ -58,20 +52,20 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                 });
                     } else {
-                        loginPassword.setError("Wrong Password");
+                        binding.loginPassword.setError("Wrong Password");
                     }
-                } else if(email.isEmpty()) {
-                    loginEmail.setError("Email cannot be empty");
+                } else if (email.isEmpty()) {
+                    binding.loginEmail.setError("Email cannot be empty");
                 } else {
-                    loginEmail.setError("Your email not valid");
+                    binding.loginEmail.setError("Your email not valid");
                 }
             }
         });
-                signupRedirectText.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
-                    }
-                });
+        binding.signupRedirectText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
+            }
+        });
     }
 }

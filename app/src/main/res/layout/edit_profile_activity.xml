@@ -98,7 +98,7 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/textViewUsername"
+                    android:id="@+id/edtUsername"
                     android:layout_width="267dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -136,7 +136,7 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/textViewPhone"
+                    android:id="@+id/edtPhone"
                     android:layout_width="267dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -174,7 +174,7 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/textViewEmail"
+                    android:id="@+id/edtEmail"
                     android:layout_width="267dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -186,7 +186,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/retrievebtn"
+            android:id="@+id/saveBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"

@@ -85,7 +85,7 @@
             android:exported="false">
         </activity>
         <activity
-            android:name=".CourtActivity"
+            android:name=".AdminCourtActivity"
             android:exported="false">
         </activity>
         <activity

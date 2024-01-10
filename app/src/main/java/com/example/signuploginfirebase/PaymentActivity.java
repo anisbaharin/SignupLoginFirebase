@@ -6,45 +6,47 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.example.signuploginfirebase.databinding.PaymentActivityBinding;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class PaymentActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    NavigationView navigationView;
-    Toolbar toolbar;
-    DrawerLayout drawerLayout;
+    private PaymentActivityBinding binding;
+
     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.payment_activity);
+        binding = PaymentActivityBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         mAuth = FirebaseAuth.getInstance();
-        Spinner spinner1 = findViewById(R.id.time_spinner);
-        Spinner spinner2 = findViewById(R.id.duration_spinner);
-        drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
-        toolbar = findViewById(R.id.toolbar);
+        findViewById(R.id.time_spinner);
+        findViewById(R.id.duration_spinner);
 
-        setSupportActionBar(toolbar);
+        setSupportActionBar(binding.toolbar);
 
-        navigationView.bringToFront();
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawerLayout.addDrawerListener(toggle);
+        binding.navView.bringToFront();
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this,
+                binding.drawerLayout,
+                binding.toolbar,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close
+        );
+        binding.drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
-
-        navigationView.setCheckedItem(R.id.nav_home);
+        binding.navView.setNavigationItemSelectedListener(this);
+        binding.navView.setCheckedItem(R.id.nav_home);
 
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(
@@ -57,7 +59,7 @@ public class PaymentActivity extends AppCompatActivity implements NavigationView
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // Apply the adapter to the spinner
-        spinner1.setAdapter(adapter1);
+        binding.timeSpinner.setAdapter(adapter1);
 
         // Next Array
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(
@@ -70,13 +72,13 @@ public class PaymentActivity extends AppCompatActivity implements NavigationView
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // Apply the adapter to the spinner
-        spinner2.setAdapter(adapter2);
+        binding.durationSpinner.setAdapter(adapter2);
     }
 
     @Override
     public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
+        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            binding.drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
@@ -123,7 +125,8 @@ public class PaymentActivity extends AppCompatActivity implements NavigationView
                     })
                     .show();
         }
-        drawerLayout.closeDrawer(GravityCompat.START);
+
+        binding.drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 
