@@ -60,6 +60,7 @@ public class SignUpActivity extends AppCompatActivity {
                         userMap.put("phone", binding.signupPhonenumber.getText().toString().trim());
                         userMap.put("username", binding.signupUsername.getText().toString().trim());
                         userMap.put("password", binding.signupPassword.getText().toString().trim());
+                        userMap.put("role", "user");
 
                         db.collection("user")
                                 .document(userId)

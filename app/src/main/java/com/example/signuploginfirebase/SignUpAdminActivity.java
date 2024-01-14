@@ -63,6 +63,7 @@ public class SignUpAdminActivity extends AppCompatActivity {
                         userMap.put("phone", binding.signupPhonenumberAdmin.getText().toString().trim());
                         userMap.put("username", binding.signupUsernameAdmin.getText().toString().trim());
                         userMap.put("password", binding.signupPasswordAdmin.getText().toString().trim());
+                        userMap.put("role", "admin");
 
                         db.collection("admin")
                                 .document(userId)
