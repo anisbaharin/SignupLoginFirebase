@@ -13,7 +13,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class AddActivity extends AppCompatActivity {
 
     private ActivityAddBinding binding;
-
     private FirebaseFirestore db;
 
     @Override
@@ -55,19 +54,24 @@ public class AddActivity extends AppCompatActivity {
             return;
         }
 
-        Court newCourt = new Court(courtNumber,courtName,courtDetails,courtPrice);
+        Court newCourt = new Court(courtNumber, courtName, courtDetails, courtPrice);
 
         db.collection("courts")
                 .add(newCourt)
                 .addOnSuccessListener(documentReference -> {
+                    showToast("Added new court success!");
                     startActivity(new Intent(getApplicationContext(), AdminMainActivity.class));
                     finish();
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
-
     }
+
+    private void showToast(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
     public void showBackBtn(View view) {
         Intent intent = new Intent(AddActivity.this, AdminMainActivity.class);
         startActivity(intent);
