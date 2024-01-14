@@ -13,6 +13,7 @@ import com.example.signuploginfirebase.databinding.ActivityLoginBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
+import android.text.method.PasswordTransformationMethod;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -29,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         auth = FirebaseAuth.getInstance();
+        binding.loginPassword.setTransformationMethod(new PasswordTransformationMethod());
 
         binding.loginButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import android.text.method.PasswordTransformationMethod;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -35,6 +37,9 @@ public class AdminLoginActivity extends AppCompatActivity {
         loginEmail = findViewById(R.id.login_email_admin);
         loginPassword = findViewById(R.id.login_password_admin);
         signupRedirectText = findViewById(R.id.signupRedirectText);
+
+        // Set PasswordTransformationMethod to hide the password
+        loginPassword.setTransformationMethod(new PasswordTransformationMethod());
 
         loginButton.setOnClickListener(view -> {
             String email = loginEmail.getText().toString();
