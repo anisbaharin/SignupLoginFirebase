@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class AdminLoginActivity extends AppCompatActivity {
 
@@ -42,13 +43,8 @@ public class AdminLoginActivity extends AppCompatActivity {
             if (!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 if (!pass.isEmpty()) {
                     auth.signInWithEmailAndPassword(email,pass)
-                            .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                                @Override
-                                public void onSuccess(AuthResult authResult) {
-                                    Toast.makeText(AdminLoginActivity.this, "Welcome to Futsal Court!", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(AdminLoginActivity.this, AdminMainActivity.class));
-                                    finish();
-                                }
+                            .addOnSuccessListener(authResult -> {
+                                checkUserRole(authResult.getUser().getUid());
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
@@ -71,6 +67,39 @@ public class AdminLoginActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void checkUserRole(String userId) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("user")
+                .document(userId)
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        String role = documentSnapshot.getString("role");
+
+                        if (role != null && role.equals("admin")) {
+                            // User is an admin, proceed to AdminMainActivity
+                            startActivity(new Intent(AdminLoginActivity.this, AdminMainActivity.class));
+                            finish();
+                        } else {
+                            // User is not an admin, log out and redirect to UserLoginActivity
+                            Toast.makeText(AdminLoginActivity.this, "Please login as user", Toast.LENGTH_SHORT).show();
+                            auth.signOut();
+                            startActivity(new Intent(AdminLoginActivity.this, LoginActivity.class));
+                            finish();
+                        }
+                    } else {
+                        // Handle the case when user data is not available in Firestore
+                        Toast.makeText(AdminLoginActivity.this, "User data not found", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    // Handle failures while checking user role
+                    Toast.makeText(AdminLoginActivity.this, "Failed to check user role", Toast.LENGTH_SHORT).show();
+                });
+    }
+
 
     @Override
     protected void onResume() {
