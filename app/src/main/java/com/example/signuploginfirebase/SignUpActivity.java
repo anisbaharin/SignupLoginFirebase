@@ -62,7 +62,7 @@ public class SignUpActivity extends AppCompatActivity {
                         userMap.put("password", binding.signupPassword.getText().toString().trim());
                         userMap.put("role", "user");
 
-                        db.collection("user")
+                        db.collection("users")
                                 .document(userId)
                                 .set(userMap)
                                 .addOnSuccessListener(aVoid -> {

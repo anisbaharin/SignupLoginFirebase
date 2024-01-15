@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
     private void checkUserRole(String userId) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        db.collection("admin")
+        db.collection("users")
                 .document(userId)
                 .get()
                 .addOnSuccessListener(documentSnapshot -> {

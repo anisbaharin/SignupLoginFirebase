@@ -65,7 +65,7 @@ public class SignUpAdminActivity extends AppCompatActivity {
                         userMap.put("password", binding.signupPasswordAdmin.getText().toString().trim());
                         userMap.put("role", "admin");
 
-                        db.collection("admin")
+                        db.collection("users")
                                 .document(userId)
                                 .set(userMap)
                                 .addOnSuccessListener(aVoid -> {

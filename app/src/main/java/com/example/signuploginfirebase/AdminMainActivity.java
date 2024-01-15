@@ -1,11 +1,13 @@
 package com.example.signuploginfirebase;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -48,17 +50,18 @@ public class AdminMainActivity extends AppCompatActivity {
         });
 
         signoutCard.setOnClickListener(new View.OnClickListener() {
+
             @Override
-            public void onClick(View view) {
-                // Sign out the user
-                FirebaseAuth.getInstance().signOut();
+            public void onClick(View view){
+                    // Sign out the user
+                    FirebaseAuth.getInstance().signOut();
 
-                // Navigate to the desired activity (in this case, UserRoles)
-                Intent intent = new Intent(AdminMainActivity.this, UserRoles.class);
-                startActivity(intent);
+                    // Navigate to the desired activity (in this case, UserRoles)
+                    Intent intent = new Intent(AdminMainActivity.this, UserRoles.class);
+                    startActivity(intent);
 
-                // Finish the current activity to prevent the user from coming back with the back button
-                finish();
+                    // Finish the current activity to prevent the user from coming back with the back button
+                    finish();
             }
         });
             }
