@@ -5,19 +5,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.signuploginfirebase.Court
-import com.example.signuploginfirebase.databinding.CourtItemviewBinding
+import com.example.signuploginfirebase.databinding.UserCourtItemviewBinding
 import com.example.signuploginfirebase.util.CustomDiffUtil
 
 class UserCourtListAdapter: RecyclerView.Adapter<UserCourtListAdapter.CourtListViewHolder>() {
 
     private var courtList: List<Court> = listOf()
 
-    inner class CourtListViewHolder(val binding: CourtItemviewBinding)
+    inner class CourtListViewHolder(val binding: UserCourtItemviewBinding)
         : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CourtListViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding = CourtItemviewBinding.inflate(inflater, parent, false)
+        val binding = UserCourtItemviewBinding.inflate(inflater, parent, false)
         return CourtListViewHolder(binding)
     }
 
