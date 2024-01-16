@@ -34,7 +34,7 @@ public class EditProfileAdminActivity extends AppCompatActivity {
         if (currentUser != null) {
             String userID = currentUser.getUid();
 
-            db.collection("admin")
+            db.collection("users")
                     .document(userID)
                     .get()
                     .addOnSuccessListener(documentSnapshot -> {
@@ -68,7 +68,7 @@ public class EditProfileAdminActivity extends AppCompatActivity {
     }
 
     private void updateProfile(String userID, String newUsername, String newEmail, String newPhone) {
-        db.collection("admin")
+        db.collection("users")
                 .document(userID)
                 .update("username", newUsername, "email", newEmail, "phone", newPhone)
                 .addOnSuccessListener(aVoid -> {

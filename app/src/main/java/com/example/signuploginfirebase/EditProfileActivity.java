@@ -55,7 +55,7 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
         if (currentUser != null) {
             String userID = currentUser.getUid();
 
-            db.collection("user")
+            db.collection("users")
                     .document(userID)
                     .get()
                     .addOnSuccessListener(documentSnapshot -> {
@@ -95,7 +95,7 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
     }
 
     private void updateProfile(String userID, String newUsername, String newEmail, String newPhone) {
-        db.collection("user")
+        db.collection("users")
                 .document(userID)
                 .update("username", newUsername, "email", newEmail, "phone", newPhone)
                 .addOnSuccessListener(aVoid -> {

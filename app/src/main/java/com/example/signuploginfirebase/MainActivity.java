@@ -5,22 +5,35 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.signuploginfirebase.adapter.CourtListAdapter;
+import com.example.signuploginfirebase.adapter.UserCourtListAdapter;
 import com.example.signuploginfirebase.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private ActivityMainBinding binding;
 
     private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
+    private UserCourtListAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +43,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         mAuth = FirebaseAuth.getInstance();
         setSupportActionBar(binding.toolbar);
+
+        db = FirebaseFirestore.getInstance();
+        mAdapter = new UserCourtListAdapter();
+
+        binding.courtRV.setLayoutManager(new LinearLayoutManager(this));
+        binding.courtRV.setAdapter(mAdapter);
+
+        // Load Court Data
+        loadCourt();
 
         binding.navView.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -43,6 +65,52 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         binding.navView.setNavigationItemSelectedListener(this);
         binding.navView.setCheckedItem(R.id.nav_home);
+    }
+
+    private void loadCourt() {
+        CollectionReference courtRef = db.collection("courts");
+
+        courtRef.get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        QuerySnapshot documents = task.getResult();
+
+                        if (!documents.isEmpty()) {
+
+                            mAdapter.submitList(getCourtList(documents));
+
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Error: No such document", Toast.LENGTH_SHORT).show();
+                        }
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Error: User could not be found", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private List<Court> getCourtList(QuerySnapshot documents) {
+        List<Court> list = new ArrayList<>();
+
+        // Loop through all the documents in the collection
+        for (DocumentSnapshot document : documents) {
+
+            String courtName = document.get("courtName").toString();
+            String courtNumber = document.get("courtNumber").toString();
+            String courtDetail = document.get("courtDetail").toString();
+            String courtPrice = document.get("courtPrice").toString();
+
+            Court c = new Court(
+                    courtNumber,
+                    courtName,
+                    courtDetail,
+                    courtPrice
+            );
+
+            list.add(c);
+        }
+
+        return list;
     }
 
     @Override

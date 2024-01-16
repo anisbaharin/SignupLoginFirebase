@@ -33,7 +33,7 @@ public class ProfileAdminActivity extends AppCompatActivity {
 
     private void loadUserProfile() {
         userId = auth.getCurrentUser().getUid();
-        db.collection("admin").document(userId)
+        db.collection("users").document(userId)
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {

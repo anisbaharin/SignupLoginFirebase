@@ -59,7 +59,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
 
     private void loadUserProfile() {
         userId = auth.getCurrentUser().getUid();
-        db.collection("user").document(userId)
+        db.collection("users").document(userId)
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
