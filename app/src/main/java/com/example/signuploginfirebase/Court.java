@@ -1,6 +1,6 @@
 package com.example.signuploginfirebase;
-
 public class Court {
+    private String documentId;
     private String courtNumber;
     private String courtName;
     private String courtDetail;
@@ -19,6 +19,14 @@ public class Court {
     }
 
     // Getters and Setters
+    public String getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
+    }
+
     public String getCourtNumber() {
         return courtNumber;
     }
@@ -42,6 +50,7 @@ public class Court {
     public void setCourtDetail(String courtDetail) {
         this.courtDetail = courtDetail;
     }
+
     public String getCourtPrice() {
         return courtPrice;
     }

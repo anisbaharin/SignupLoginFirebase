@@ -96,6 +96,10 @@
             android:name=".EditProfileAdminActivity"
             android:exported="false">
         </activity>
+        <activity
+            android:name=".AdminUpdateCourtActivity"
+            android:exported="false">
+        </activity>
     </application>
 
 </manifest>

@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.signuploginfirebase.databinding.ActivityEditProfileAdminBinding;
 import com.example.signuploginfirebase.databinding.EditProfileActivityBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -14,7 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class EditProfileAdminActivity extends AppCompatActivity {
 
-    private EditProfileActivityBinding binding;
+    private ActivityEditProfileAdminBinding binding;
 
     private FirebaseAuth mAuth;
 
@@ -23,7 +24,7 @@ public class EditProfileAdminActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = EditProfileActivityBinding.inflate(getLayoutInflater());
+        binding =ActivityEditProfileAdminBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         db = FirebaseFirestore.getInstance();
@@ -53,7 +54,7 @@ public class EditProfileAdminActivity extends AppCompatActivity {
                     });
         }
 
-        binding.saveBtn.setOnClickListener(new View.OnClickListener() {
+        binding.updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String newUsername = binding.edtUsername.getText().toString();

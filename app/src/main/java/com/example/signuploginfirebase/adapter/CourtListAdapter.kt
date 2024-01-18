@@ -8,7 +8,7 @@ import com.example.signuploginfirebase.Court
 import com.example.signuploginfirebase.databinding.CourtItemviewBinding
 import com.example.signuploginfirebase.util.CustomDiffUtil
 
-class CourtListAdapter: RecyclerView.Adapter<CourtListAdapter.CourtListViewHolder>() {
+class CourtListAdapter(private val onCourtItemClick: OnCourtItemClickListener) : RecyclerView.Adapter<CourtListAdapter.CourtListViewHolder>() {
 
     private var courtList: List<Court> = listOf()
 
@@ -33,6 +33,11 @@ class CourtListAdapter: RecyclerView.Adapter<CourtListAdapter.CourtListViewHolde
             courtNumberTV.text = currentItem.courtNumber
             courtDetailsTV.text = currentItem.courtDetail
             courtPriceTV.text = currentItem.courtPrice
+
+            // Set a click listener to handle item clicks
+            root.setOnClickListener {
+                onCourtItemClick.onItemClick(currentItem)
+            }
         }
     }
 
@@ -43,4 +48,8 @@ class CourtListAdapter: RecyclerView.Adapter<CourtListAdapter.CourtListViewHolde
         result.dispatchUpdatesTo(this)
     }
 
+    // Interface to handle item clicks
+    interface OnCourtItemClickListener {
+        fun onItemClick(clickedCourt: Court)
+    }
 }

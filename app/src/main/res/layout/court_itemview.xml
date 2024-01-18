@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
     android:layout_marginVertical="8dp"
-    app:cardBackgroundColor="#F1C4C4"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="8dp">
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp">
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -49,7 +50,7 @@
                 android:layout_weight="1"
                 tools:text="Court Number"
                 android:textAlignment="center"
-                android:textColor="@color/grey"
+                android:textColor="@color/black"
                 android:textSize="17sp" />
         </LinearLayout>
 
@@ -89,7 +90,7 @@
                 android:layout_weight="1"
                 tools:text="Court Name"
                 android:textAlignment="center"
-                android:textColor="@color/grey"
+                android:textColor="@color/black"
                 android:textSize="17sp" />
         </LinearLayout>
 
@@ -129,7 +130,7 @@
                 android:layout_weight="1"
                 tools:text="Court Details HJ cjscjsabcjbscjbscjsbjcscjcbjsbcjbsjcb"
                 android:textAlignment="center"
-                android:textColor="@color/grey"
+                android:textColor="@color/black"
                 android:textSize="17sp" />
         </LinearLayout>
 
@@ -169,9 +170,46 @@
                 android:layout_weight="1"
                 tools:text="Court Price"
                 android:textAlignment="center"
-                android:textColor="@color/grey"
+                android:textColor="@color/black"
                 android:textSize="17sp" />
+
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btnUpdate"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="190dp"
+            android:backgroundTint="@color/black"
+            android:fontFamily="sans-serif"
+            android:letterSpacing="0.2"
+            android:text="Update"
+            android:textSize="15sp"
+            app:cornerRadius="5dp"
+            android:onClick="updateBtn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="190dp"
+            android:backgroundTint="@color/black"
+            android:fontFamily="sans-serif"
+            android:letterSpacing="0.2"
+            android:text="Delete"
+            android:textSize="15sp"
+            app:cornerRadius="5dp"
+            android:onClick="deleteBtn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
