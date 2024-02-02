@@ -45,7 +45,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(binding.toolbar);
 
         db = FirebaseFirestore.getInstance();
-        mAdapter = new UserCourtListAdapter();
+
+        UserCourtListAdapter.OnCourtItemClickListener listener = new UserCourtListAdapter.OnCourtItemClickListener() {
+            @Override
+            public void onItemClick(Court court) {
+                // No action is performed when an item is clicked
+            }
+        };
+
+        mAdapter = new UserCourtListAdapter(listener);
 
         binding.courtRV.setLayoutManager(new LinearLayoutManager(this));
         binding.courtRV.setAdapter(mAdapter);
@@ -99,12 +107,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             String courtNumber = document.get("courtNumber").toString();
             String courtDetail = document.get("courtDetail").toString();
             String courtPrice = document.get("courtPrice").toString();
+            String imageUrl = document.get("imageUrl").toString();
 
             Court c = new Court(
                     courtNumber,
                     courtName,
                     courtDetail,
-                    courtPrice
+                    courtPrice,
+                    imageUrl
             );
 
             list.add(c);

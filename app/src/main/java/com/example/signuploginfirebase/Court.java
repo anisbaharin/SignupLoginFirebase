@@ -5,17 +5,19 @@ public class Court {
     private String courtName;
     private String courtDetail;
     private String courtPrice;
+    private String imageUrl;
 
     // Constructors
     public Court() {
         // Default constructor required for Firestore
     }
 
-    public Court(String courtNumber, String courtName, String courtDetail, String courtPrice) {
+    public Court(String courtNumber, String courtName, String courtDetail, String courtPrice, String imageUrl) {
         this.courtNumber = courtNumber;
         this.courtName = courtName;
         this.courtDetail = courtDetail;
         this.courtPrice = courtPrice;
+        this.imageUrl = imageUrl;
     }
 
     // Getters and Setters
@@ -57,5 +59,13 @@ public class Court {
 
     public void setCourtPrice(String courtPrice) {
         this.courtPrice = courtPrice;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

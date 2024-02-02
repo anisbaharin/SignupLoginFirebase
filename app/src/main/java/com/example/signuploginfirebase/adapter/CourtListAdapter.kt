@@ -1,5 +1,6 @@
 package com.example.signuploginfirebase.adapter
 
+import com.bumptech.glide.Glide
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -33,6 +34,11 @@ class CourtListAdapter(private val onCourtItemClick: OnCourtItemClickListener) :
             courtNumberTV.text = currentItem.courtNumber
             courtDetailsTV.text = currentItem.courtDetail
             courtPriceTV.text = currentItem.courtPrice
+
+            // Load the courtImage using Glide library
+            Glide.with(root.context)
+                    .load(currentItem.imageUrl)
+                    .into(courtImageViewTV)
 
             // Set a click listener to handle item clicks
             root.setOnClickListener {

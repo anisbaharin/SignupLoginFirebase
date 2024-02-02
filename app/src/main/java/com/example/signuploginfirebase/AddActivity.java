@@ -4,30 +4,22 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.signuploginfirebase.databinding.ActivityAddBinding;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
 import java.util.UUID;
 
@@ -37,8 +29,6 @@ public class AddActivity extends AppCompatActivity {
     LinearProgressIndicator progress;
     Uri image;
     MaterialButton selectImage, uploadImage;
-    ImageView imageView;
-
     private ActivityAddBinding binding;
     private FirebaseFirestore db;
 
@@ -49,7 +39,7 @@ public class AddActivity extends AppCompatActivity {
                 if (result.getData() != null) {
                     image = result.getData().getData();
                     uploadImage.setEnabled(true);
-                    Glide.with(getApplicationContext()).load(image).into(imageView);
+                    Glide.with(getApplicationContext()).load(image).into(binding.imageView);
                 }
             } else {
                 Toast.makeText(AddActivity.this, "Please select an image", Toast.LENGTH_SHORT).show();
@@ -67,7 +57,6 @@ public class AddActivity extends AppCompatActivity {
         storageReference = FirebaseStorage.getInstance().getReference();
 
         progress = findViewById(R.id.progress);
-        imageView = findViewById(R.id.imageView);
         selectImage = findViewById(R.id.selectImage);
         uploadImage = findViewById(R.id.uploadImage);
 
@@ -92,35 +81,35 @@ public class AddActivity extends AppCompatActivity {
         binding.saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveCourt();
+                // You don't need to call saveCourt here. It will be called in the uploadImage method
+                // after successfully uploading the image.
             }
         });
     }
-
 
     private void uploadImage(Uri image) {
         StorageReference reference = storageReference.child("/image*" + UUID.randomUUID().toString());
-        reference.putFile(image).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(AddActivity.this, "Image uploaded successfully!", Toast.LENGTH_SHORT).show();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(AddActivity.this, "There was an error while uploading image", Toast.LENGTH_SHORT).show();
-            }
-        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                progress.setMax(Math.toIntExact(snapshot.getTotalByteCount()));
-                progress.setProgress(Math.toIntExact(snapshot.getBytesTransferred()));
-            }
-        });
+
+        reference.putFile(image)
+                .addOnSuccessListener(taskSnapshot -> {
+                    // Get the download URL of the uploaded image
+                    reference.getDownloadUrl().addOnSuccessListener(uri -> {
+                        // Save the download URL along with other court details in Firestore
+                        saveCourt(uri.toString());
+                    }).addOnFailureListener(e -> {
+                        Toast.makeText(AddActivity.this, "Failed to get download URL", Toast.LENGTH_SHORT).show();
+                    });
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(AddActivity.this, "There was an error while uploading image", Toast.LENGTH_SHORT).show();
+                })
+                .addOnProgressListener(snapshot -> {
+                    progress.setMax(Math.toIntExact(snapshot.getTotalByteCount()));
+                    progress.setProgress(Math.toIntExact(snapshot.getBytesTransferred()));
+                });
     }
 
-
-    private void saveCourt() {
+    private void saveCourt(String imageURL) {
         String courtNumber = binding.addCourtNo.getText().toString();
         String courtName = binding.addCourtName.getText().toString();
         String courtDetails = binding.addCourtDetails.getText().toString();
@@ -143,7 +132,7 @@ public class AddActivity extends AppCompatActivity {
             return;
         }
 
-        Court newCourt = new Court(courtNumber, courtName, courtDetails, courtPrice);
+        Court newCourt = new Court(courtNumber, courtName, courtDetails, courtPrice, imageURL);
 
         db.collection("courts")
                 .add(newCourt)
@@ -157,7 +146,6 @@ public class AddActivity extends AppCompatActivity {
                 });
     }
 
-
     private void showToast(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
@@ -167,4 +155,3 @@ public class AddActivity extends AppCompatActivity {
         startActivity(intent);
     }
 }
-

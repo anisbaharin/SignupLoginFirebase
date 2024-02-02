@@ -56,6 +56,7 @@ dependencies {
 
     // To load and display images
     implementation 'com.github.bumptech.glide:glide:4.15.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
 
     // Image Slideshow
     implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'

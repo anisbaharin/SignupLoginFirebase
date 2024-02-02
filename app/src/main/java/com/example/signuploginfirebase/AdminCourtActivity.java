@@ -85,8 +85,9 @@ public class AdminCourtActivity extends AppCompatActivity {
             String courtNumber = document.getString("courtNumber");
             String courtDetail = document.getString("courtDetail");
             String courtPrice = document.getString("courtPrice");
+            String imageUrl = document.getString("imageUrl");
 
-            Court c = new Court(courtNumber, courtName, courtDetail, courtPrice);
+            Court c = new Court(courtNumber, courtName, courtDetail, courtPrice, imageUrl);
             c.setDocumentId(document.getId()); // Set the document ID
 
             list.add(c);

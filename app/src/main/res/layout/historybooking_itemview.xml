@@ -33,7 +33,7 @@
             android:padding="8dp">
 
             <TextView
-                android:id="@+id/number1"
+                android:id="@+id/numberText"
                 android:layout_width="190dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -53,13 +53,6 @@
                 android:textColor="@color/black"
                 android:textSize="17sp" />
         </LinearLayout>
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_margin="10dp"
-            android:alpha="0.5"
-            android:background="@color/black" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -94,13 +87,6 @@
                 android:textSize="17sp" />
         </LinearLayout>
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_margin="10dp"
-            android:alpha="0.5"
-            android:background="@color/black" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -133,13 +119,6 @@
                 android:textColor="@color/black"
                 android:textSize="17sp" />
         </LinearLayout>
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_margin="10dp"
-            android:alpha="0.5"
-            android:background="@color/black" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -175,6 +154,42 @@
 
         </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/bookingText"
+            android:layout_width="15dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:text="BOOKING BY, "
+            android:textAlignment="center"
+            android:textColor="@color/black"
+
+            android:textStyle="bold"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/usernameText"
+            android:layout_width="15dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:text="User Name"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -200,6 +215,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:scaleType="centerCrop"/>
+
         </LinearLayout>
 
         <Button

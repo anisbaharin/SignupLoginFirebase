@@ -4,11 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.signuploginfirebase.Court
 import com.example.signuploginfirebase.databinding.UserCourtItemviewBinding
 import com.example.signuploginfirebase.util.CustomDiffUtil
 
-class UserCourtListAdapter: RecyclerView.Adapter<UserCourtListAdapter.CourtListViewHolder>() {
+class UserCourtListAdapter(private val onCourtItemClick: OnCourtItemClickListener) : RecyclerView.Adapter<UserCourtListAdapter.CourtListViewHolder>() {
 
     private var courtList: List<Court> = listOf()
 
@@ -31,6 +32,16 @@ class UserCourtListAdapter: RecyclerView.Adapter<UserCourtListAdapter.CourtListV
         holder.binding.apply {
             courtNameTV.text = currentItem.courtName
             courtNumberTV.text = currentItem.courtNumber
+
+            // Load the courtImage using Glide library
+            Glide.with(root.context)
+                    .load(currentItem.imageUrl)
+                    .into(courtImageViewTV)
+
+            // Set a click listener to handle item clicks
+            root.setOnClickListener {
+                onCourtItemClick.onItemClick(currentItem)
+            }
         }
     }
 
@@ -41,4 +52,8 @@ class UserCourtListAdapter: RecyclerView.Adapter<UserCourtListAdapter.CourtListV
         result.dispatchUpdatesTo(this)
     }
 
+    // Interface to handle item clicks
+    interface OnCourtItemClickListener {
+        fun onItemClick(clickedCourt: Court)
+    }
 }
